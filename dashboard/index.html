@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#board">Skip to the board</a>
+<div class="shell">
+  <header class="top">
+    <div class="brand"><span class="sweep" aria-hidden="true"></span><span class="brand-name">TOKEN&nbsp;RADAR</span></div>
+    <div class="top-meta"><span id="meta-date"></span><span id="meta-model"></span><span id="meta-cover" class="cover-badge"></span></div>
+  </header>
+
+  <section class="lede">
+    <div>
+      <h1 id="headline"></h1>
+      <p id="lede-text"></p>
+    </div>
+    <div class="facts" id="facts"></div>
+  </section>
+
+  <section class="controls" aria-label="Board controls">
+    <div class="field grow">
+      <label for="q">Search</label>
+      <input type="search" id="q" placeholder="Name, category or chain" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="category">Category</label>
+      <select id="category"></select>
+    </div>
+    <div class="field">
+      <label for="chain">Chain</label>
+      <select id="chain"></select>
+    </div>
+    <div class="field check">
+      <label class="check-label"><input type="checkbox" id="watchlist-only"> Watchlist only</label>
+    </div>
+    <div class="field">
+      <span class="field-label" id="tab-label">Token status</span>
+      <div class="tabs" role="group" aria-labelledby="tab-label">
+        <button type="button" id="tab-pre" aria-pressed="true">Pre-token</button>
+        <button type="button" id="tab-live" aria-pressed="false">Live token</button>
+      </div>
+    </div>
+    <span class="count" id="count"></span>
+  </section>
+
+  <div class="whatif" id="whatif" hidden></div>
+
+  <main id="board" tabindex="-1" aria-busy="true"></main>
+
+  <section class="panel model" id="model" aria-labelledby="model-title">
+    <h2 id="model-title">How implied value is computed</h2>
+    <p class="sub" id="model-intro"></p>
+    <div class="formula" id="formula"></div>
+    <p class="sub" id="model-notes"></p>
+    <div class="sandbox" aria-labelledby="sandbox-title">
+      <div class="sandbox-head">
+        <h3 id="sandbox-title">Model sandbox</h3>
+        <button type="button" class="button" id="sandbox-reset">Reset to the calibrated model</button>
+      </div>
+      <p class="sub">Move a slider to re-score the whole board with the same function. The board above re-ranks live; board.json keeps the calibrated values.</p>
+      <div class="sliders">
+        <label class="slider"><span>Base multiple <b id="mult-val" class="num"></b></span><input type="range" id="mult" min="0.05" max="1" step="0.01"></label>
+        <label class="slider"><span>Growth weight <b id="growth-val" class="num"></b></span><input type="range" id="growth" min="0" max="1" step="0.05"></label>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p id="foot-text"></p>
+  </footer>
+</div>
+
+<dialog class="detail" id="detail" aria-labelledby="detail-title"></dialog>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
